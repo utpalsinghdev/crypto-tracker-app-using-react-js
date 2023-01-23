@@ -34,7 +34,7 @@ const CoinDetails = () => {
   const [chartArray, setChartArray] = useState([]);
   const currencySymbol =
     currency === "inr" ? "₹" : currency === "usd" ? "$" : "€";
-  const btns = ["24h", "7d","14d", "30d", "60d", "365d", "1825d", "max"]
+  const btns = ["24h", "7d", "14d", "30d", "60d", "365d", "1825d", "max"];
   const FetchCoin = async () => {
     try {
       const { data } = await axios.get(`${server}/coins/${id}`);
@@ -44,11 +44,8 @@ const CoinDetails = () => {
       );
       setCoin(data);
       setChartArray(chartData.prices);
-      console.log(chartData);
       setLoading(false);
-      console.log(data);
     } catch (error) {
-      console.log(error);
       setError(true);
     }
   };
@@ -66,10 +63,9 @@ const CoinDetails = () => {
       ) : (
         <>
           <Box w={"full"} borderWidth={1}>
-            <Chart arr={chartArray} days={days} currency={currencySymbol} />
+            <Chart price={Coin.market_data.current_price[currency]} arr={chartArray} days={days} currency={currencySymbol} />
           </Box>
           <HStack marginTop={4} spacing={4} overflowX={"auto"}>
-
             {btns.map((btn) => (
               <Button
                 key={btn}
@@ -81,7 +77,6 @@ const CoinDetails = () => {
               </Button>
             ))}
           </HStack>
-
 
           <RadioGroup value={currency} onChange={setCurrency} p={8}>
             <HStack spacing={4}>

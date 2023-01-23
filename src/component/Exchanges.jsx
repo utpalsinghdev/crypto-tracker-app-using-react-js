@@ -23,7 +23,6 @@ const Exchanges = () => {
         setExchanges(data);
         setLoading(false);
       } catch (error) {
-        console.log(error);
         setError(true);
       }
     };

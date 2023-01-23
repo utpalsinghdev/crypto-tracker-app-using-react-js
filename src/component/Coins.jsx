@@ -30,11 +30,9 @@ const Coins = () => {
       const { data } = await axios.get(
         `${server}/coins/markets?vs_currency=${currency}&page=${pages}`
       );
-      console.log(data);
       setCoins(data);
       setLoading(false);
     } catch (error) {
-      console.log(error);
       setError(true);
     }
   };

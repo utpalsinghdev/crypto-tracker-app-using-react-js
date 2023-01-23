@@ -21,32 +21,32 @@ ChartJS.register(
   Tooltip
 );
 
-const Chart = ({ arr = [], currency, days }) => {
+const Chart = ({ arr = [],price, currency, days }) => {
   const prices = [];
   const date = [];
 
   for (let i = 0; i < arr.length; i++) {
     if (days === "24h") {
       date.push(new Date(arr[i][0]).toLocaleTimeString());
-    }else{
+    } else {
       date.push(new Date(arr[i][0]).toLocaleDateString());
     }
     prices.push(arr[i][1]);
-
-    
   }
 
   const data = {
     labels: date,
     datasets: [
       {
-        label: `Price in ${currency}`,
+        label: `${currency} ${price}`,
         data: prices,
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.2)",
       },
+      
     ],
-  }
+    
+  };
 
   return (
     <Line
