@@ -72,6 +72,9 @@ const CoinDetails = () => {
                 onClick={() => setDays(btn)}
                 colorScheme={btn === days ? "green" : "gray"}
                 cursor="pointer"
+                css={{
+                  padding: "24px",
+                }}
               >
                 {btn}
               </Button>
